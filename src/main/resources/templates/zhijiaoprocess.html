@@ -1,0 +1,194 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="http://re.go9999.com/upload/web/themes/eev1/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/lib/slick.css">
+    <title>中国支教联盟 - 满天星支教计划</title>
+
+    <meta name="csrf-param" content="_backendCSRF">
+    <meta name="csrf-token" content="dGdEWkpPVjdHISoFOgoBYg4KNgJ8Gzx9Qy1wBXkVInEuLmkxJCIRQg==">
+
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/css/style.css">
+</head>
+
+
+<body onload="estaclisConnection()">
+<nav class="navbar navbar-default navbar-theme">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/">Go9999</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/toIndex">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown  active">
+                    <a href="/toZhiJiaoIndex">支教</a>
+                </li>
+               <!-- <li class="dropdown ">
+                    <a href="/topic/index">日志</a>
+                </li>
+                <li class="dropdown ">
+                    <a href="/album/index">相册</a>
+                </li>-->
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">助学</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">申请资助</a></li>
+                        <li><a href="#">资助学生</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">项目</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">基础建设</a></li>
+                        <li><a href="#">物资捐赠</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">最新活动</a></li>
+                        <li><a href="#">往期活动</a></li>
+                        <li><a href="#">活动进行时</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">财务</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">其他费用</a></li>
+                        <li><a href="#">办公室经费</a></li>
+                        <li><a href="#">志愿者补贴</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://site.douban.com/118628/">小站</a></li>
+                <li><a href="/toAboutUs">关于我们</a></li>
+                <li class=" hide"><a href="https://shop136419451.taobao.com/">周边</a></li>
+                <li class=" hide"><a href="#">FM电台</a></li>
+            </ul>
+
+            <div class="nav navbar-nav navbar-right login-tool">
+                <br>
+                <div class="login-btns" th:if="${user} == null">
+                    <a href="/toLogin" class="login-btn">登录</a>
+                    <a href="/toRegister" class="reg-btn">注册</a>
+                </div>
+                <div th:if="${user} != null">
+                    <span id="uname" style="color: red" th:text="'欢迎登录,'+ ${user}+'同学!'"></span>
+                    <input id="websocketname" th:value="${user}" style="display: none"/>
+                </div>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- header -->
+
+<input id="information"  th:align="center"  style="border: none"  type="text" class="form-control">
+<div class="main-wrap uc-warp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="uc-content user-content panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">满天星支教计划流程图显示:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="blog-list">
+                           <!-- <img src="../images/applicationprocess.png?rand=h9xqeI">-->
+                            <img id="empImgContent" src="../application/image"/>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div>
+
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row footer-contact">
+            <div class="col-md-6">
+                <h3>联系我们</h3>
+                <ul>
+                    <li>地址：江苏省南京市江宁区南京晓庄学院</li>
+                    <li>电话：011-88888888</li>
+                    <li>网址：http://www.njxzc.edu.cn/</li>
+                    <li>邮箱：1874391867@qq.com</li>
+                    <li>QQ群：88888888</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>关注我们</h3>
+                <div class="qrcode">
+                    <img src="../images/qrcodexiao.png">
+                    <img src="../images/qrcodexiaozhuang.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+<link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+<script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?36a2d067681a1e37a088cce729e1b44d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+
+    var name = $("#websocketname").val();
+    function estaclisConnection() {
+        console.log(name);
+        var socket;
+        if(typeof(WebSocket) == "undefined") {
+            console.log("您的浏览器不支持WebSocket");
+        }else{
+            console.log("您的浏览器支持WebSocket");
+            socket = new WebSocket("ws://127.0.0.1:8080/websocket/"+name);
+            socket.onopen = function() {
+                console.log("Socket 已打开");
+            };
+            socket.onmessage = function(msg) {
+                console.log(msg.data);
+                $("#information").val(msg.data);
+            };
+            socket.onclose = function() {
+                console.log("Socket已关闭");
+                $("#close").val("Socket已关闭")
+            };
+            socket.onerror = function() {
+                alert("Socket发生了错误");
+            }
+        }
+    }
+
+</script>
+
+
+
+
+</body>
+
+</html>

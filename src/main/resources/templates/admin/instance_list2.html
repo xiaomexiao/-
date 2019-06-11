@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" href="../admin/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/bootstrap-paginator.js"></script>
+
+    <title>Title</title>
+</head>
+<body onload="listbook()">
+<div class="panel panel-info">
+    <div class="panel-heading">审批列表</div>
+    <div class="panel-body">
+
+
+
+    </div>
+</div>
+
+<table class="table table-bordered table-striped table-hover" id="table">
+    <thead>
+    <tr class="label-success">
+        <th style="width:5%">序号</th>
+        <th style="width:4%">流程id</th>
+        <th style="width:8%">申请状态</th>
+        <th style="width:4%">用户id</th>
+        <th style="width:8%">姓名</th>
+        <th style="width:8%">邮箱</th>
+        <th style="width:8%">手机</th>
+        <th style="width:12%">图片名字</th>
+        <th style="width: 10%">申请理由</th>
+        <th style="width: 9%">审批操作</th>
+    </tr>
+    </thead>
+    <tbody id="tb">
+    </tbody>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        审批列表:
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <span class="text-success">申请人:</span><input type="text" class="form-control" id="username">
+                    <span class="text-success">邮箱:</span><input type="text" class="form-control" id="mail">
+                    <span class="text-success">手机:</span><input type="text" class="form-control" id="phone">
+                    <span style="display: none" class="text-success">流程id:</span><input type="text" name="processInstanceId" id="proId" class="form-control" style="display: none">
+                    <span style="display: none" class="text-success">用户id:</span><input type="text" name="userId" id="userId" class="form-control" style="display: none">
+                    <span class="text-success">申请理由:</span><input type="text" class="form-control" id="reason">
+                    <span style="display: none" class="text-success">申请状态:</span><input type="text" name="adminResult" value="1" id="adminResult" class="form-control" style="display: none">
+                    <span class="text-success">审批理由:</span><textarea id="comment" class="form-control" name="comment"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="bohui()">
+                        提交按钮
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</table>
+</body>
+<script>
+    function listbook() {
+        $("#tb").html("");
+        $.ajax({
+            type: 'post',
+            url: '../application/getTask',
+            data: '{"name":"admin","":"' + $("#bn").val() + '"}',
+            dataType: 'json',
+            contentType: 'application/json;charset=utf-8',
+            success: function (result) {
+                console.log(result);
+                var tb = $("#tb");
+                var data = result.面试审查;
+                var msg = "";
+                $.each(data, function (index, book) {
+                    msg += "<tr>" +
+                        "<td>" + book.id + "</td>" +
+                        "<td>" + book.processInstanceId + "</td>" +
+                        "<td>" + book.state + "</td>" +
+                        "<td>" + book.userId + "</td>" +
+                        "<td>" + book.name + "</td>" +
+                        "<td>" + book.mail + "</td>" +
+                        "<td>" + book.phone + "</td>" +
+                        "<td>" + book.resumeurl + "</td>" +
+                        "<td>" + book.reason + "</td>" +
+                        "<td ><button class='btn btn-success'  onclick='success(" + book.processInstanceId + ")'>通过</button>&nbsp;&nbsp;<button data-toggle='modal' data-target='#myModal' class='btn btn-danger' onclick='del(" + book.processInstanceId + ")'>驳回</button></td></tr>";
+                });
+                tb.append(msg);
+            },
+            error: function () {
+                alert("传输错误")
+            }
+        })
+    }
+
+    function success(processInstanceId) {
+        $.ajax({
+            type:'post',
+            url:'../application/toSucessMianShi',
+            data:'{"processInstanceId":"'+processInstanceId+'"}',
+            dataType:'json',
+            contentType: 'application/json;charset=utf-8',
+            success:function (data) {
+
+            }
+        })
+    }
+
+    function del(processInstanceId) {
+        $.ajax({
+            type:'post',
+            url:'../application/getByprocessInstanceId',
+            data:'{"processInstanceId":"'+processInstanceId+'"}',
+            dataType:'json',
+            contentType: 'application/json;charset=utf-8',
+            success:function (data) {
+                $("#username").val(data.name);
+                $("#mail").val(data.mail);
+                $("#phone").val(data.phone);
+                $("#proId").val(data.processInstanceId);
+                $("#userId").val(data.userId);
+                $("#reason").val(data.reason);
+            }
+        })
+    }
+
+    function bohui() {
+        $.ajax({
+            type:'post',
+            url:'../application/toErrorBaoMing',
+            data:'{"processInstanceId":"'+$("#proId").val()+'","comment":"'+$("#comment").val()+'","userId":"'+$("#userId").val()+'"}',
+            dataType:'json',
+            contentType: 'application/json;charset=utf-8',
+            success:function (data) {
+
+            }
+
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,165 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="http://re.go9999.com/upload/web/themes/eev1/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/lib/slick.css">
+    <title>中国支教联盟 - 登录</title>
+
+    <meta name="csrf-param" content="_backendCSRF">
+    <meta name="csrf-token" content="anpUWllZTFkCOB8sbHQdHgIgAgJoK3U/XjJiNDIcOColMmICKRYlOg==">
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/css/style.css">
+    <script src="../js/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+<body onload="name()">
+<nav class="navbar navbar-default navbar-theme">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/">Go9999</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/toIndex">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown ">
+                    <a href="/toZhiJiaoIndex">支教</a>
+                </li>
+                <!--<li class="dropdown ">
+                    <a href="/topic/index">日志</a>
+                </li>
+                <li class="dropdown ">
+                    <a href="/album/index">相册</a>
+                </li>-->
+                <li><a href="https://site.douban.com/118628/">小站</a></li>
+                <li><a href="/toAboutUs">关于我们</a></li>
+                <li class=" hide"><a href="https://shop136419451.taobao.com/">周边</a></li>
+                <li class=" hide"><a href="#">FM电台</a></li>
+            </ul>
+
+            <div class="nav navbar-nav navbar-right login-tool">
+                <div id="login-btns" class="login-btns">
+                    <a href="/toLogin" class="login-btn">登录</a>
+                    <a href="/toRegister" class="reg-btn">注册</a>
+                </div>
+                <div><span id="uname" style="color: red"></span></div>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- header -->
+
+<div class="login-warp">
+    <div class="login-form shadow">
+        <div class="login-head">
+            <h1>用户登录</h1>
+        </div>
+        <div class="login-content">
+            <div id="wo" style="padding-top:30px">
+            <!--<form>-->
+                <div style="height: 250px;width: 300px;margin: 0 auto">
+                <input type="hidden" name="_backendCSRF">
+                <div class="form-inputs">
+
+                    <div class="form-item ">
+                        <input type="text" id="loginform-phone" class="form-control" name="phone" placeholder="请输入手机号">                        </div>
+
+
+                    <div class="form-item ">
+                        <input type="password" id="loginform-pass" class="form-control" name="password" placeholder="请输入密码">                        </div>
+
+                </div>
+                <div class="form-item form-btn">
+                    <button class="submit-btn" onclick="toLogin()">登 录</button>
+                </div>
+
+                    <div class="login-tip">
+                    <p style="color: red;" id="detail"></p>
+                    <a href="javascript:此功能没做呢" class="pull-left">忘记密码</a>
+                    <a class="pull-right" href="/toRegister">还没有账号，立即注册</a>
+                </div>
+                </div>
+            <!--</form>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row footer-contact">
+            <div class="col-md-6">
+                <h3>联系我们</h3>
+                <ul>
+                    <li>地址：江苏省南京市江宁区南京晓庄学院</li>
+                    <li>电话：011-88888888</li>
+                    <li>网址：http://www.njxzc.edu.cn/</li>
+                    <li>邮箱：1874391867@qq.com</li>
+                    <li>QQ群：88888888</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>关注我们</h3>
+                <div class="qrcode">
+                    <img src="../images/qrcodexiao.png">
+                    <img src="../images/qrcodexiaozhuang.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    function toLogin() {
+        $.ajax({
+            type:'post',
+            url:'../user/selectByPhone',
+            data:'{"phone":"'+$("#loginform-phone").val()+'","password":"'+$("#loginform-pass").val()+'"}',
+            dataType:'json',
+            contentType: 'application/json;charset=utf-8',
+
+            success : function (result) {
+                var show = '';
+                if(result.msg === "账号不存在"){
+                    show = '账号不存在';
+                    $("#detail").html(show);
+                }else if(result.msg === "密码错误"){
+                    show = '密码错误';
+                    $("#detail").html(show);
+                }else {
+                    location.href = '/toIndex';
+                }
+            }
+        })
+    }
+
+    function name() {
+        $.ajax({
+            type:'post',
+            url:"../user/getName",
+            success:function (result) {
+                console.log(result);
+                if(result == "no"){
+                    $("#uname").hide();
+                }else {
+                    $("#login-btns").hide();
+                    $("#uname").html("欢迎登录,"+result+"同学!");
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

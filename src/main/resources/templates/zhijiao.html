@@ -1,0 +1,277 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="http://re.go9999.com/upload/web/themes/eev1/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/lib/slick.css">
+    <title>中国支教联盟 - 满天星支教计划</title>
+
+    <meta name="csrf-param" content="_backendCSRF">
+    <meta name="csrf-token" content="QkVVQXlhUWcKPTYkSgtpLCQTJS0fGWIAEiAPDU81PyUDDGQTG1QIPQ==">
+
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/css/style.css">
+</head>
+
+
+<body style="">
+<nav class="navbar navbar-default navbar-theme">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/">Go9999</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/toIndex">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown  active">
+                    <a href="/toZhiJiaoIndex">支教</a>
+                </li>
+                <!--<li class="dropdown ">
+                    <a href="/topic/index">日志</a>
+                </li>
+                <li class="dropdown ">
+                    <a href="/album/index">相册</a>
+                </li>-->
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">助学</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">申请资助</a></li>
+                        <li><a href="#">资助学生</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">项目</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">基础建设</a></li>
+                        <li><a href="#">物资捐赠</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">最新活动</a></li>
+                        <li><a href="#">往期活动</a></li>
+                        <li><a href="#">活动进行时</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">财务</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">其他费用</a></li>
+                        <li><a href="#">办公室经费</a></li>
+                        <li><a href="#">志愿者补贴</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://site.douban.com/118628/">小站</a></li>
+                <li><a href="/toAboutUs">关于我们</a></li>
+                <li class=" hide"><a href="https://shop136419451.taobao.com/">周边</a></li>
+                <li class=" hide"><a href="#">FM电台</a></li>
+            </ul>
+
+            <div class="nav navbar-nav navbar-right login-tool">
+                <br>
+                <div class="login-btns" th:if="${user} == null">
+                    <a href="/toLogin" class="login-btn">登录</a>
+                    <a href="/toRegister" class="reg-btn">注册</a>
+                </div>
+                <div th:if="${user} != null">
+                    <a href="/toProcessInstance"> <span id="uname" style="color: red" th:text="'欢迎登录,'+ ${user}+'同学!'" ></span></a>
+                </div>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- header -->
+
+<div class="main-wrap uc-warp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="uc-content user-content panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">满天星支教计划</h3>
+                        <a href="/toApplication" class="btn btn-success pull-right" style="margin-top: 6px;" >申请支教</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="blog-post">
+                            <h1>2019年春季支教志愿者招募公告</h1>
+                            <div class="time">发布时间：2018-11-15 22:49:19</div>
+                            <div class="time">招募时间：2018-11-15 23:00:00 - 2019-03-10 23:55:00</div>
+                            <div class="post-content">
+
+
+
+
+
+                                <p>写在最前：</p>
+                                <section class="" data-brushtype="text"></section>
+                                <section class="" data-brushtype="text"></section>
+                                <section class="" data-brushtype="text"></section>
+                                <section class="" data-brushtype="text">
+                                    <p>真正的教育是发掘自身的天赋与热爱，找到可以为之奋斗一生的事业。这便是教育的真谛，也是人生活的意义所在。</p>
+                                    <p>支教是一份需要认真的态度和极强责任心的工作，申请支教务必三思而后行。</p>
+                                    <p>&nbsp;</p>
+                                    <p>2019年春季长期支教志愿者招募详情</p>
+                                    <p><br>为缓解中西部地区师资力量匮乏，促进乡村教育发展，支教联盟通过有计划的向社会招募志愿者，审核和培训后派遣前往贵州、云南、广西及宁夏地区进行为期一学期或更长时间的长期支教援助。</p>
+                                    <p><br>支教志愿者将担任中小学九年制义务教育主要科目（语数英等），接受学校领导和当地教育主管部门以及中国∙支教联盟共同管理。由于支教学校师资力量匮乏，志愿者可能同时担任音体美等教学任务兼班主任或教学主任以及校长等管理工作。</p>
+                                </section>
+                                <p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291674_ZAGO6Ta9eU.jpg" alt="alt text" width="596" height="839"></p>
+                                <p>&nbsp;</p>
+                                <p><strong>一、申请支教流程图</strong></p>
+                                <p><img src="http://re.go9999.com/upload/site/1523260797_3yi382pf8b.png" alt="alt text" width="660" height="470"></p>
+                                <section class="" data-tools="135编辑器" data-id="87934">
+                                    <section>
+                                        <section class="" data-brushtype="text">
+                                            <p><strong>二、审核培训时间安排</strong></p>
+                                            <p>（一） &nbsp;招募及审核时间：2018年11月15日—2019年01月31日（招募时间范围内才可以填写申请表）</p>
+                                        </section>
+                                    </section>
+                                </section>
+                                <p>（二） &nbsp;审核渠道：通过QQ、微信、电话等方式进行审核</p>
+                                <p>（三） &nbsp;培训时间：2019年2月中下旬，为期7天 （具体时间以通知为准）</p>
+                                <p>（四） &nbsp;培训地点：贵州省从江县（贵州从江支教点）</p>
+                                <p>（五） &nbsp;支教时间：2019年2月底—2019年7月初(请注意支教时间，时间不符的请勿报名)</p>
+                                <p>（六） &nbsp;支教地点：贵州、广西、云南、宁夏、青海</p>
+                                <p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291726_DEGDWR0k5g.jpg" alt="alt text" width="1440" height="1080"></p>
+                                <p><em>小画家：李俊/广西都安池花小学一年级学生</em></p>
+                                <p>&nbsp;</p>
+                                <p><strong>三、招募要求</strong></p>
+                                <p>为了给孩子们提供更规范健康的学习环境，请务必确保以下所有条件与您实际情况相符：</p>
+                                <p>（一）&nbsp;&nbsp;具有全日制大专或本科以上学历，要提供毕业证书；</p>
+                                <p>（二）&nbsp;&nbsp;21周岁(含)到60周岁(含)之间；</p>
+                                <p>（三）&nbsp;&nbsp;普通话标准，思维逻辑强，执行力强；</p>
+                                <p>（四）&nbsp;&nbsp;有充足的时间完成至少一个学期的教学任务(2019年2月底—2019年7月初)；</p>
+                                <p>（五）&nbsp;&nbsp;取得父母或配偶对支教的理解和支持（联盟将对通过的申请人进行亲属意向调查）；</p>
+                                <p>（六）&nbsp;&nbsp;可自行协调单位和工作关系，联盟不负责出具证明文件；</p>
+                                <p>（七）&nbsp;&nbsp;有一定经济能力，能承担支教期间所产生的相关费用；</p>
+                                <p>（八）&nbsp;&nbsp;身体素质良好、能进行一定强度体力劳动；</p>
+                                <p>（九）&nbsp;&nbsp;心理健康、品行端正、性格开朗、善于与人沟通，具有团队协作能力、有爱心、责任心和毅力、无偏激情绪和不良嗜好；</p>
+                                <p>（十） &nbsp;有志愿服务精神，愿意奉献，愿意主动和孩子们相处、传播知识和爱。</p>
+                                <section class="" data-tools="135编辑器" data-id="87934">
+                                    <section>
+                                        <p>&nbsp;注：各支教老师教学地点由联盟统一分配，个人意愿为辅。</p>
+                                        <p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291790_CShi2c9qSr.jpg" alt="alt text" width="598" height="846"></p>
+                                        <p>&nbsp;</p>
+                                        <p><strong>四、申请材料</strong></p>
+                                        <p>（一）申请阶段所需资料，请在官网的志愿者报名页面提交</p>
+                                    </section>
+                                </section>
+                                <p>1.&nbsp;&nbsp;&nbsp;&nbsp;最高学历证明：学信网截图 / 毕业证原件照片（任选其一）；</p>
+                                <p>2.&nbsp;&nbsp;&nbsp;&nbsp;身份证原件照片；护照原件照片（非中国大陆籍申请人提供护照）；</p>
+                                <p>3.&nbsp;&nbsp;&nbsp;&nbsp;紧急联系人及电话：必须为直系亲属/配偶。</p>
+                                <p>&nbsp;</p>
+                                <p>（二）培训报到阶段所需资料，资料于培训报到日现场提交给培训部工作人员</p>
+                                <p>1.&nbsp;&nbsp;&nbsp;&nbsp;近三个月内在正规医院取得的常规体检报告原件；</p>
+                                <p>2.&nbsp;&nbsp;&nbsp;&nbsp;2寸免冠彩照2张；</p>
+                                <p>3.&nbsp;&nbsp;&nbsp;&nbsp;身份证复印件2份；</p>
+                                <p>4.&nbsp;&nbsp;&nbsp;&nbsp;最高学历证书复印件2份。</p>
+                                <p>&nbsp;</p>
+                                <p><img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291843_WhNZI1Bupz.jpg" alt="alt text" width="1440" height="1080"><em>小画家：李俊/广西都安池花小学一年级学生</em></p>
+                                <p>&nbsp;</p>
+                                <p><strong>五、志愿者培训</strong></p>
+                                <p>（一）培训目的</p>
+                                <p>1.&nbsp;&nbsp;&nbsp;提前了解支教地区生活环境、风俗人情、教学环境等，为在当地生活及支教做好准备；</p>
+                                <p>2.&nbsp;&nbsp;&nbsp;掌握支教活动中的相关知识和技能，学习和完善教学方法；</p>
+                                <p>3.&nbsp;&nbsp;&nbsp;学习往届志愿者的工作经验，制定合理的支教计划，充分做好支教前心态建设工作；</p>
+                                <p>4.&nbsp;&nbsp;&nbsp;增加志愿者实地教学经验，提升志愿者综合素质。</p>
+                                <p>&nbsp;</p>
+                                <p>（二）培训费用：交通费、住宿费、餐饮费均为个人支出</p>
+                                <p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291889_0P2QapfgJ0.jpg" alt="alt text" width="673" height="919"></p>
+                                <p>&nbsp;</p>
+                                <p><strong>六、我们是谁？</strong></p>
+                                <p>中国·支教联盟（CNAEF）创立于2006年4月，由社会各界自愿支持偏远地区青少年教育的爱心人士组成，是中国最早成立的民间支教公益组织、中国青少年教育平等运动的倡导者和实践者、一直致力于偏远地区教育事业发展的非营利性民间机构。</p>
+                                <p>&nbsp;</p>
+                                <p><strong>七、我们为孩子们做什么？</strong></p>
+                                <p>联盟的主要工作是：收集和展示偏远地区教育现状，发布支教需求信息，呼吁全民共同关注偏远地区孩子的成长；牵线支教志愿者，为偏远地区提供支教资源，缓解师资匮乏现状；为贫困地区提供生活及教学物资的支持；搭建一对一助学和捐赠的桥梁。</p>
+                                <p>十二年来，我们的脚步到达了宁夏、贵州、云南、四川、陕西、湖南、广西、青海、新疆、河南、江西等43个县，最远到达了缅甸的缅北华人地区；支援偏远山区中小学将近240所，定向资助高中生4百余人，中小学生2千余人；通过联盟参加支教志愿者老师2千余人，支教课时20万余节；援建教学场所70余处，捐赠图书2万余册、物资45万件，惠及人数达到100万人次。</p>
+                                <p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291920_wCWeDAZ33s.jpg" alt="alt text" width="1440" height="1080"></p>
+                                <p><em>小画家：李俊/广西都安池花小学一年级学生</em></p>
+                                <p>&nbsp;</p>
+                                <p><strong>&nbsp;八、</strong><strong>我们为志愿者做什么？</strong></p>
+                                <p>（一） &nbsp;对各支教学校及周边环境进行实地考察，深入了解当地民风民俗；并与当地教育局或镇中心小学报备各支教老师信息；</p>
+                                <p>（二） &nbsp;以省为单位配备支教队长一名，志愿者遇到任何问题可直接与支教队长联系解决；</p>
+                                <p>（三） &nbsp;为期10天的行前集中培训，涉及教学方法及生活注意事项，以帮助志愿者快速进入角色；</p>
+                                <p>（四） &nbsp;为志愿者提供一份支教期间的人身意外保险；</p>
+                                <p>（五） &nbsp;学期结束时，所有顺利完成支教的志愿者将获得￥1000/学期的生活补贴和联盟支教证书一份；</p>
+                                <p>（六） &nbsp;支教期间表现出色的志愿者，联盟会为您提供合作企业的工作机会；</p>
+                                <p>（七） &nbsp;有机会参与到联盟后勤行政工作中，与我们非常有爱、优秀的团队一起策划、宣传、招募更多志愿者；</p>
+                                <p>（八） &nbsp;一份无法忘却的人生体验；</p>
+                                <p>（九） &nbsp;一群志同道合的良师益友。</p>
+                                <p>&nbsp;</p>
+                                <p><img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542291993_8r832h0RkX.jpg" alt="alt text" width="1440" height="1080"><em>小画家：李俊/广西都安池花小学一年级学生</em></p>
+                                <p>&nbsp;</p>
+                                <p><strong>九、&nbsp;&nbsp;提升面试通过率，您需要了解：</strong></p>
+                                <p>&nbsp;下图为2017年影响志愿者申请通过的问题汇总</p>
+                                <p><img src="http://re.go9999.com/upload/site/1523264508_oVXV61j7eI.jpg" alt="alt text" width="730" height="392"></p>
+                                <p>☆2017年春季年龄为22周岁以上，2018年已调整至21周岁</p>
+                                <p>&nbsp;</p>
+                                <p><img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;" src="http://re.go9999.com/upload/site/1542292036_av5zNVCMpa.jpg" alt="alt text" width="937" height="703"><em>小画家：李俊/广西都安池花小学一年级学生</em></p>
+                                <p>&nbsp;</p>
+                                <p>如有问题可加QQ群：104151030，或致电：0755-26911012，或加微信：louise412咨询。</p>
+
+                            </div>
+                        </div>
+                        <div>
+                            <a href="/toIndex" class="btn btn-default">&lt;&lt; 返回</a>
+                            <a href="/toApplication" class="btn btn-success pull-right">申请支教</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+<div class="container">
+    <div class="row footer-contact">
+        <div class="col-md-6">
+            <h3>联系我们</h3>
+            <ul>
+                <li>地址：江苏省南京市江宁区南京晓庄学院</li>
+                <li>电话：011-88888888</li>
+                <li>网址：http://www.njxzc.edu.cn/</li>
+                <li>邮箱：1874391867@qq.com</li>
+                <li>QQ群：88888888</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>关注我们</h3>
+            <div class="qrcode">
+                <img src="images/qrcodexiao.png">
+                <img src="images/qrcodexiaozhuang.png">
+            </div>
+        </div>
+    </div>
+
+</div>
+</footer>
+
+<script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+<link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+<script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?36a2d067681a1e37a088cce729e1b44d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body>
+</html>

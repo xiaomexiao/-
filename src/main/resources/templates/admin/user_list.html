@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" href="../admin/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/bootstrap-paginator.js"></script>
+    <title>Title</title>
+</head>
+<body onload="info()">
+<div class="panel panel-info">
+    <div class="panel-heading">用户列表</div>
+    <div class="panel-body">
+
+        <div class="form-group">
+            <input type="text" name="username" style="width: 500px;display: inline" id="un" class="form-control" placeholder="请输入名称" />
+            <button class="btn btn-success" onclick="info()">查询</button>
+            <!--<button type="button" class="btn btn-success" onclick="location.href='tour/preAdd'">新增</button>-->
+        </div>
+
+    </div>
+</div>
+
+<table class="table table-bordered table-striped table-hover" id="table">
+    <thead>
+    <tr class="label-success" >
+        <th style="width:5%">序号</th>
+        <th style="width:10%">手机</th>
+        <th style="width:8%">密码</th>
+        <th style="width:8%">名字</th>
+        <th style="width:8%">性别</th>
+        <th style="width: 9%">操作</th>
+
+    </tr>
+    </thead>
+    <tbody id="tb">
+    </tbody>
+</table>
+</body>
+<script>
+    function info() {
+        $.ajax({
+            type:'post',
+            url:'../user/list',
+            data:'{"name":"'+$("#un").val()+'"}',
+            dataType:'json',
+            contentType: 'application/json;charset=utf-8',
+            success:function (data) {
+                $("#tb").html('');
+                var msg = '';
+                var tb =$("#tb");
+                $.each(data,function (index,user) {
+                    msg+="<tr><td>"+user.id+"</td>" +
+                        "<td>"+user.phone+"</td>" +
+                        "<td>"+user.password+"</td>" +
+                        "<td>"+user.name+"</td>" +
+                        "<td>"+user.sex+"</td>" +
+                        "<td onclick='del("+user.id+",this)'>删除</td></tr>";
+                });
+                tb.append(msg);
+            },
+            error:function () {
+                alert("error");
+            }
+        })
+    }
+
+
+    function del(id,noyTr) {
+        //alert(id);
+        alert("你确定要删除么?");
+        $.ajax({
+            type:'post',
+            url:'../user/deleteUser',
+            data:'{"id":"'+id+'"}',
+            dataType:'json',
+            contentType: 'application/json;charset=utf-8',
+            success : function (data) {
+                console.log(data);
+                console.log(noyTr);
+                $(noyTr).parent().remove();
+            },
+            error: function () {
+                $(noyTr).parent().remove();
+            }
+        })
+    }
+</script>
+</html>

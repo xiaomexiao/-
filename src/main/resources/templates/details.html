@@ -1,0 +1,223 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="http://re.go9999.com/upload/web/themes/eev1/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/lib/slick.css">
+    <title>中国支教联盟 - 满天星支教计划</title>
+
+    <meta name="csrf-param" content="_backendCSRF">
+    <meta name="csrf-token" content="ZmtwMFRESENSH0F/H2l4CSczBnQ9EQYUFgE5eD0yKg8AXQoBNjYCEQ==">
+
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/css/style.css">
+</head>
+
+
+<body style="">
+<nav class="navbar navbar-default navbar-theme">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/">Go9999</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/toIndex">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown  active">
+                    <a href="/toZhiJiaoIndex">支教</a>
+                </li>
+              <!--  <li class="dropdown ">
+                    <a href="/topic/index">日志</a>
+                </li>
+                <li class="dropdown ">
+                    <a href="/album/index">相册</a>
+                </li>-->
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">助学</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">申请资助</a></li>
+                        <li><a href="#">资助学生</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">项目</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">基础建设</a></li>
+                        <li><a href="#">物资捐赠</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">活动</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">最新活动</a></li>
+                        <li><a href="#">往期活动</a></li>
+                        <li><a href="#">活动进行时</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown hide">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">财务</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">其他费用</a></li>
+                        <li><a href="#">办公室经费</a></li>
+                        <li><a href="#">志愿者补贴</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://site.douban.com/118628/">小站</a></li>
+                <li><a href="/toAboutUs">关于我们</a></li>
+                <li class=" hide"><a href="https://shop136419451.taobao.com/">周边</a></li>
+                <li class=" hide"><a href="#">FM电台</a></li>
+            </ul>
+
+            <div class="nav navbar-nav navbar-right login-tool">
+                <br>
+                <div class="login-btns" th:if="${user} == null">
+                    <a href="/toLogin" class="login-btn">登录</a>
+                    <a href="/toRegister" class="reg-btn">注册</a>
+                </div>
+                <div th:if="${user} != null">
+                    <a href="/toProcessInstance"> <span id="uname" style="color: red" th:text="'欢迎登录,'+ ${user}+'同学!'" ></span></a>
+                </div>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- header -->
+
+<div class="main-wrap uc-warp">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="uc-content user-content panel" th:each="events : ${event}">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">满天星支教计划</h3>
+                        <a href="/toApplication" class="btn btn-success pull-right" style="margin-top: 6px;">申请支教</a>
+                    </div>
+                    <div class="panel-body" th:each="eventdetails : ${eventdetail}">
+                        <div class="blog-post">
+                            <h1 th:text="${events.getTitle()}"></h1>
+                            <div class="time">发布时间：<span th:text="${events.getIssuetime()}"></span></div>
+                            <div class="time">招募时间：<span th:text="${events.getStartime()}"></span> - <span
+                                    th:text="${events.getEndtime()}"></span></div>
+                            <div class="post-content">
+                                <div th:if="${eventdetails.getEvent1() != null}">
+                                    <p th:text="${eventdetails.getEvent1()}"></p>
+                                </div>
+                                <div th:if="${eventdetails.getPic1()!= null}">
+                                    <p>
+                                        <img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;"
+                                             th:src="${eventdetails.getPic1()}" alt="alt text" width="960" height="720">
+                                    </p>
+                                </div>
+                                <div th:if="${eventdetails.getEvent2() != null}">
+                                    <p th:text="${eventdetails.getEvent2()}"></p>&nbsp;&nbsp;
+                                </div>
+                                <div th:if="${eventdetails.getPic2() != null}">
+                                    <p>
+                                        <img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;"
+                                             th:src="${eventdetails.getPic2()}" alt="alt text" width="960" height="720">
+                                    </p>
+                                </div>
+                                <div th:if="${eventdetails.getEvent3() != null}">
+                                    <p th:text="${eventdetails.getEvent3()}"></p>
+                                </div>
+                                <div th:if="${eventdetails.getPic3() != null}">
+                                    <p>
+                                        <img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;"
+                                             th:src="${eventdetails.getPic3()}" alt="alt text" width="960" height="720">
+                                    </p>
+                                </div>
+                                <div th:if="${eventdetails.getEvent4()!=null}">
+                                    <p th:text="${eventdetails.getEvent4()}"></p>
+                                </div>
+                                <div th:if="${eventdetails.getPic4() != null}">
+                                    <p>
+                                        <img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;"
+                                             th:src="${eventdetails.getPic4()}" alt="alt text" width="960" height="720">
+                                    </p>
+                                </div>
+                                <div th:if="${eventdetails.getEvent5()!=null}">
+                                    <p th:text="${eventdetails.getEvent5()}"></p>
+                                </div>
+                                <div th:if="${eventdetails.getPic5() != null}">
+                                    <p>
+                                        <img style="display: block; margin-left: auto; margin-right: auto; max-width: 100%; height: auto;"
+                                             th:src="${eventdetails.getPic5()}" alt="alt text" width="960" height="720">
+                                    </p>
+                                </div>
+                                <p>要求:大专及以上学历，普通话标准，21周岁及以上。具体的招募要求请参考</p>
+                                <h1><span style="color: #ff0000;"><a href="/toZhiJiao">2018年秋季支教志愿者招募公告</a></span></h1>
+                                <p>&nbsp;</p>
+                                <p>如有问题可加QQ群：104151030，或致电：0755-26911012，或加微信：louise412咨询。</p>
+
+                            </div>
+                        </div>
+                        <div>
+                            <a href="/toIndex" class="btn btn-default">&lt;&lt; 返回</a>
+                            <a href="/toApplication" class="btn btn-success pull-right">申请支教</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row footer-contact">
+            <div class="col-md-6">
+                <h3>联系我们</h3>
+                <ul>
+                    <li>地址：江苏省南京市江宁区南京晓庄学院</li>
+                    <li>电话：011-88888888</li>
+                    <li>网址：http://www.njxzc.edu.cn/</li>
+                    <li>邮箱：1874391867@qq.com</li>
+                    <li>QQ群：88888888</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>关注我们</h3>
+                <div class="qrcode">
+                    <img src="../images/qrcodexiao.png">
+                    <img src="../images/qrcodexiaozhuang.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+<link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+<script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?36a2d067681a1e37a088cce729e1b44d";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+</body>
+</html>

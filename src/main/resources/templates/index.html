@@ -1,0 +1,305 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="http://re.go9999.com/upload/web/themes/eev1/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/lib/slick.css">
+    <title>中国支教联盟 - 首页</title>
+
+    <meta name="csrf-param" content="_backendCSRF">
+    <meta name="csrf-token" content="YjRZYllUYXdTdR4JNDUENU9NOCgMAjsNNgw/By0nKho1Bg87YWQxAg==">
+
+    <link rel="stylesheet" href="http://re.go9999.com/upload/web/themes/eev1/style/css/style.css">
+    <style>
+        div.item img{
+            width:100%;
+        }
+        div#carousel-example-generic{
+            width:100%;
+            margin:0 auto;
+        }
+    </style>
+
+</head>
+<body onload="name()">
+<!--<p th:text="${events}"></p>-->
+<nav class="navbar navbar-default navbar-theme">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand logo" href="/">Go9999</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/toIndex">首页 <span class="sr-only">(current)</span></a></li>
+                <li class="dropdown ">
+                    <a href="/toZhiJiaoIndex">支教</a>
+                </li>
+               <!-- <li class="dropdown ">
+                    <a href="/topic/index">日志</a>
+                </li>
+                <li class="dropdown ">
+                    <a href="/album/index">相册</a>
+                </li>-->
+                <li><a href="https://site.douban.com/118628/">小站</a></li>
+                <li><a href="/toAboutUs">关于我们</a></li>
+                <li class=" hide"><a href="https://shop136419451.taobao.com/">周边</a></li>
+                <li class=" hide"><a href="#">FM电台</a></li>
+            </ul>
+
+            <div class="nav navbar-nav navbar-right login-tool">
+                <br>
+                <div id="login-btns" class="login-btns">
+                    <a href="/toLogin" class="login-btn">登录</a>
+                    <a href="/toRegister" class="reg-btn">注册</a>
+                </div>
+                <div><a href="/toProcessInstance"><span id="uname" style="color: red"></span></a></div>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- header -->
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="http://re.go9999.com/upload/web/themes/eev1/pic/banner201901.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="http://re.go9999.com/upload/web/themes/eev1/pic/banner201903.jpg" alt="">
+        </div>
+        <div class="item">
+            <img src="http://re.go9999.com/upload/web/themes/eev1/pic/banner201902.jpg" alt="">
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+    </a>
+
+</div>
+
+<section class="section">
+    <div class="container">
+        <div class="section-title">满天星支教计划</div>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pic"><img src="http://re.go9999.com/upload/web/themes/eev1/pic/pic_zj.jpg" alt=""></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="intro">
+                        <p>为缓解中西部地区师资力量匮乏，促进乡村教育发展，中国·支教联盟于2006年通过有计划的向社会招募志愿者，审核和培训后派遣前往贵州、云南、广西及宁夏等地区进行为期一学期或更长时间的长期支教援助。</p>
+                        <a href="/toZhiJiaoIndex" class="btn btn-primary">我要支教</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h4>2019年春季支教志愿者招募公告</h4>
+                        <br>
+                        <p>真正的教育是发掘自身的天赋与热爱，找到可以为之奋斗一生的事业。这便是教育的真谛，也是人生活的意义所在。</p>
+                        <a href="/toZhiJiao" class="btn btn-default">查看详情</a>
+                        <a href="/toApplication" class="btn btn-primary">申请支教</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="pic"><img src="http://re.go9999.com/upload/site/1542293359_9wtBqaq5x3.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+       <div  th:each="event : ${events}">
+        <div class="box">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h4 th:text="${event.getTitle()}"></h4>
+                        <br>
+                        <p th:text="${event.getSurvery()}"></p>
+                        <a th:href="@{/eventdetail/listEventDetail(id=${event.getId()})}" class="btn btn-default">查看详情</a>
+                        <a href="/toApplication" class="btn btn-primary">申请支教</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="pic"><img th:src="${event.getPictureshow()}" alt=""></div>
+                </div>
+            </div>
+        </div>
+       </div>
+    </div>
+</section>
+
+<section class="section hide">
+    <div class="container">
+        <div class="section-title">项目援助</div>
+        <div class="box  noshadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h5>贵州从江县支教点的校园建设项目</h5>
+                        <p>中国·支教联盟于2006年启动的公益助学项目,在民政部门登记成立的非营利公益助学民间组织，由来自社会的一批志愿者自愿组成的草根组织。</p>
+                        <a href="" class="btn btn-primary">参与援助</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="pic"><img src="http://re.go9999.com/upload/web/themes/eev1/pic/pic02.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="pic"><img src="http://re.go9999.com/upload/web/themes/eev1/pic/pic03.jpg" alt=""></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h5>携手每个爱心人士和团队为贫困的孩子</h5>
+                        <p>中国·支教联盟于2006年启动的公益助学项目,在民政部门登记成立的非营利公益助学民间组织，由来自社会的一批志愿者自愿组成的草根组织。</p>
+                        <a href="" class="btn btn-primary">参与援助</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h5>2016年中国·支教联盟带领10为学生参加深圳冬令营</h5>
+                        <p>中国·支教联盟于2006年启动的公益助学项目,在民政部门登记成立的非营利公益助学民间组织，由来自社会的一批志愿者自愿组成的草根组织。</p>
+                        <a href="" class="btn btn-primary">活动详情</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="pic"><img src="http://re.go9999.com/upload/web/themes/eev1/pic/pic04.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section bg-white hide">
+    <div class="container">
+        <div class="section-title">最新活动</div>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h5>2016年中国·支教联盟带领10为学生参加深圳冬令营</h5>
+                        <p>中国·支教联盟于2006年启动的公益助学项目,在民政部门登记成立的非营利公益助学民间组织，由来自社会的一批志愿者自愿组成的草根组织。</p>
+                        <a href="" class="btn btn-primary">活动详情</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="pic"><img src="http://re.go9999.com/upload/web/themes/eev1/pic/pic04.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="pic"><img src="http://re.go9999.com/upload/web/themes/eev1/pic/pic05.jpg" alt=""></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h5>中国·支教联盟将于2017年6月份在深圳XX开展摄影展</h5>
+                        <p>中国·支教联盟于2006年启动的公益助学项目,在民政部门登记成立的非营利公益助学民间组织，由来自社会的一批志愿者自愿组成的草根组织。</p>
+                        <a href="" class="btn btn-primary">活动详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section bg-white">
+    <div class="container">
+        <div class="section-title">友情链接</div>
+        <ul class="links">
+            <li><a href="http://jwc.njxzc.edu.cn/">南京晓庄学院教务网</a></li>
+            <li><a href="http://xk.njxzc.edu.cn/xsxk/logout.xk">南京晓庄学院选课系统</a></li>
+            <li><a href="http://www.shininghouse.cn/home/responsibility">钻石世家慈善基金会</a></li>
+            <li><a href="https://weibo.com/u/6968081104">木易潇潇个人微博</a></li>
+        </ul>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row footer-contact">
+            <div class="col-md-6">
+                <h3>联系我们</h3>
+                <ul>
+                    <li>地址：江苏省南京市江宁区南京晓庄学院</li>
+                    <li>电话：011-88888888</li>
+                    <li>网址：http://www.njxzc.edu.cn/</li>
+                    <li>邮箱：1874391867@qq.com</li>
+                    <li>QQ群：88888888</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>关注我们</h3>
+                <div class="qrcode">
+                    <img src="images/qrcodexiao.png">
+                    <img src="images/qrcodexiaozhuang.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
+<link href="http://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+<script src="http://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+</body>
+
+<script>
+    function name() {
+        $.ajax({
+            type:'post',
+            url:"../user/getName",
+            success:function (result) {
+                console.log(result);
+                if(result == "no"){
+                    $("#uname").hide();
+                }else {
+                    $("#login-btns").hide();
+                    $("#uname").html("欢迎登录,"+result+"同学!");
+                }
+            }
+        })
+    }
+ </script>
+</html>
