@@ -10,35 +10,19 @@
     <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../admin/bootstrap-3.3.7/js/bootstrap-paginator.js"></script>
+    <script src="../layui/layui.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
     <title>Title</title>
 </head>
-<body onload="listbook()">
+<body>
 <div class="panel panel-info">
-    <div class="panel-heading">审批列表</div>
-    <div class="panel-body">
-
-
-
+    <div class="panel-heading">审批成功列表</div>
     </div>
 </div>
-
-<table class="table table-bordered table-striped table-hover" id="table">
-    <thead>
-    <tr class="label-success">
-        <th style="width:5%">序号</th>
-        <th style="width:4%">流程id</th>
-        <th style="width:8%">申请状态</th>
-        <th style="width:8%">姓名</th>
-        <th style="width:8%">邮箱</th>
-        <th style="width:8%">手机</th>
-        <th style="width:12%">图片名字</th>
-        <th style="width: 10%">申请理由</th>
-        <th style="width:4%">操作</th>
-    </tr>
-    </thead>
-    <tbody id="tb">
-    </tbody>
-</table>
+<script type="text/html" id="toolbarDemo">
+    <a id="send"  lay-event="send" data-toggle="modal" data-target="#myModal"  class="layui-btn layui-btn-sm" >发送消息</a>
+</script>
+<table id="demo" lay-filter="test"></table>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -57,7 +41,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                 </button>
-                <button type="button"  onclick="sendMessage()" class="btn btn-primary">
+                <button type="button"  onclick="sendMessage()" data-dismiss="modal"  class="btn btn-primary">
                     提交按钮
                 </button>
             </div>
@@ -67,40 +51,77 @@
 </body>
 <script>
 
-    //定义一个全局用户姓名变量
-    var userName = "";
+    layui.use('table', function(){
+        var table = layui.table;
 
-    function listbook() {
-        $("#tb").html("");
+        var Message = {
+            tableId : "demo"
+        }
+
+        table.render({
+            elem: '#demo'
+            ,url: '../application/getSuccessApplication'
+            ,page: true //开启分页
+            ,toolbar:'true'
+            ,parseData:function (res) {
+                console.log(res);
+                return{
+                    "code":0,
+                    data:res.审核成功,
+                    count:res.审核成功.length
+                }
+            }
+            ,cols: [
+                [
+                    {field: 'id', title: '序号',  sort: true, fixed: 'left',hide:'true'}
+                    ,{field: 'processInstanceId', title: '流程id',sort: true}
+                    ,{field: 'state', title: '申请状态'}
+                    ,{field: 'name', title: '姓名'}
+                    ,{field: 'mail', title: '邮箱' }
+                    ,{field: 'phone', title: '手机'}
+                    ,{field: 'resumeurl', title: '图片名字'}
+                    ,{field: 'reason', title: '申请理由'}
+                    ,{align: 'center', toolbar: '#toolbarDemo', title: '操作', minWidth: 300}
+                ]
+            ]
+        });
+
+        /*$("#myModal").click(function () {
+            Message.estaclisConnection();
+        })*/
+
+        table.on('tool(test)',function (obj) {
+           var data = obj.data;
+
+            switch(obj.event){
+                case'send':
+                    estaclisConnection(data.name)
+                    break;
+            };
+        });
+
+        Message.estaclisConnection = function (data) {
+            console.log(data);
+        }
+
+    });
+
+    function sendMessage() {
         $.ajax({
             type: 'post',
-            url: '../application/getSuccessApplication',
+            url: '../chat/toChat',
             contentType: 'application/json;charset=utf-8',
-            success: function (result) {
-                console.log(result);
-                var tb = $("#tb");
-                var data = result.审核成功;
-                var msg = "";
-                $.each(data, function (index, book) {
-                    msg += "<tr>" +
-                        "<td>" + book.id + "</td>" +
-                        "<td>" + book.processInstanceId + "</td>" +
-                        "<td>" + book.state + "</td>" +
-                        "<td>" + book.name + "</td>" +
-                        "<td>" + book.mail + "</td>" +
-                        "<td>" + book.phone + "</td>" +
-                        "<td>" + book.resumeurl + "</td>" +
-                        "<td>" + book.reason + "</td>"+
-                        "<td><button data-toggle='modal' data-target='#myModal'  class='btn btn-success'   onclick=estaclisConnection('"+book.name+"')>发送信息</button></td>"
-
-                });
-                tb.append(msg);
-            },
-            error: function () {
-                alert("传输错误")
+            data: '{"message":"' + $("#messages").val() + '","sid": "'+userName+'" ,"ownSid":"admin"}',
+            success:function (data) {
+                console.log(data);
+                layer.msg("发送成功!");
             }
         })
     }
+
+    //定义一个全局用户姓名变量
+    var userName = "";
+
 
     //建立websocket连接
     function estaclisConnection(name) {
@@ -134,17 +155,7 @@
         }
     }
 
-    function sendMessage() {
-        $.ajax({
-            type: 'post',
-            url: '../chat/toChat',
-            contentType: 'application/json;charset=utf-8',
-            data: '{"message":"' + $("#messages").val() + '","sid": "'+userName+'" ,"ownSid":"admin"}',
-            success:function (data) {
-                console.log(data);
-            }
-        })
-    }
+
 
 </script>
 </html>

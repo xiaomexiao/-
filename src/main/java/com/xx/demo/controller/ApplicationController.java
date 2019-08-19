@@ -101,9 +101,10 @@ public class ApplicationController {
                     return maps;
           }
 
-          @RequestMapping(value = "/getSuccessApplication", method = RequestMethod.POST)
+          @RequestMapping(value = "/getSuccessApplication", method = RequestMethod.GET)
           @ResponseBody
-          public  Map<String, List<Application>> getSuccessApplication() {
+          public  Map<String, List<Application>> getSuccessApplication(String limit,String page) {
+                    System.out.println("limit="+limit+","+"page="+page);
                     List<Application> applicationList = applicationMapper.selectList(null);
                     Map<String, List<Application>> maps = applicationList.stream().collect(Collectors.groupingBy(Application
                               ::getState));
