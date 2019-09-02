@@ -166,7 +166,7 @@
             console.log("您的浏览器不支持WebSocket");
         }else{
             console.log("您的浏览器支持WebSocket");
-            socket = new WebSocket("ws://127.0.0.1:8080/websocket/"+name);
+            socket = new WebSocket("ws://47.100.216.7:8080/websocket/"+name);
             socket.onopen = function() {
                 console.log("Socket 已打开");
             };

@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -92,9 +93,9 @@ public class ApplicationController {
 
 
           @ApiOperation(value = "当前的登录人待签收,待办理的任务(报名表初审)")
-          @RequestMapping(value = "/getTask", method = RequestMethod.POST)
+          @RequestMapping(value = "/getTask", method = RequestMethod.GET)
           @ResponseBody
-          public  Map<String, List<Application>> getPersonTask(@RequestBody User user) {
+          public  Map<String, List<Application>> getPersonTask(User user) {
                     List<Application> applicationList = applicationService.getApplicationTask(user.getName());
                     Map<String, List<Application>> maps = applicationList.stream().collect(Collectors.groupingBy(Application
                     ::getState));

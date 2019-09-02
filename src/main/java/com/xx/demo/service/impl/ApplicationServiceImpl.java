@@ -192,7 +192,13 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
                            String phone = getApplications(task.getProcessInstanceId()).getPhone();
                            application.setProcessInstanceId(task.getProcessInstanceId());
                            application.setState(getApplications(task.getProcessInstanceId()).getState());
-                           application.setUserId(String.valueOf(userService.getUserByPhone(phone).getId()));
+                           if(userService.getUserByPhone(phone).getId()!=null){
+                               application.setUserId(String.valueOf(userService.getUserByPhone(phone).getId()));
+                           }
+                           else {
+                               application.setUserId("根据手机号查不到用户名,缺失的脏数据");
+                           }
+
                            application.setName(userService.getUserByPhone(phone).getName());
                            application.setMail(getApplications(task.getProcessInstanceId()).getMail());
                            application.setPhone(phone);

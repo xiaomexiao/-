@@ -35,9 +35,9 @@ public class EventController {
 
           @RequestMapping(value = "listEvent")
           @ResponseBody
-          public List<Event> listEvent(@RequestBody Event event){
+          public List<Event> listEvent(String page,String limit,String title){
                  EntityWrapper<Event> eventEntityWrapper = new EntityWrapper<>();
-                 eventEntityWrapper.like("title",event.getTitle());
+                 eventEntityWrapper.like("title",title);
                  List<Event> events = eventService.selectList(eventEntityWrapper);
                  return events;
           }

@@ -54,10 +54,6 @@
     layui.use('table', function(){
         var table = layui.table;
 
-        var Message = {
-            tableId : "demo"
-        }
-
         table.render({
             elem: '#demo'
             ,url: '../application/getSuccessApplication'
@@ -100,9 +96,7 @@
             };
         });
 
-        Message.estaclisConnection = function (data) {
-            console.log(data);
-        }
+
 
     });
 
@@ -136,7 +130,7 @@
             console.log("您的浏览器不支持WebSocket");
         }else{
             console.log("您的浏览器支持WebSocket");
-            socket = new WebSocket("ws://127.0.0.1:8080/websocket/"+admin);
+            socket = new WebSocket("ws://47.100.216.7:8080/websocket/"+admin);
             socket.onopen = function() {
                 console.log("Socket 已打开");
             };

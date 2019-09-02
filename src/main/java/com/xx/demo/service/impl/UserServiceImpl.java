@@ -51,6 +51,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public User getUserByPhone(String phone) {
         EntityWrapper<User> ew = new EntityWrapper<>();
         ew.eq("phone",phone);
-        return userMapper.selectList(ew).get(0);
+        if(userMapper.selectList(ew).size()!=0 && userMapper.selectList(ew).get(0)!= null)
+             return userMapper.selectList(ew).get(0);
+        else
+            return new User();
     }
 }

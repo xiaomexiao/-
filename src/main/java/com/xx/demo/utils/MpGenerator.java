@@ -19,7 +19,7 @@ public class MpGenerator {
         dataSourceConfig.setDbType(DbType.MYSQL)
                 .setUrl(dbUrl)
                 .setUsername("root")
-                .setPassword("myxx70523")
+                .setPassword("12345")
                 .setDriverName("com.mysql.jdbc.Driver");
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig

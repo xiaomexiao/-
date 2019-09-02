@@ -75,10 +75,9 @@
     function listbook() {
         $("#tb").html("");
         $.ajax({
-            type: 'post',
+            type: 'get',
             url: '../application/getTask',
-            data: '{"name":"admin","":"' + $("#bn").val() + '"}',
-            dataType: 'json',
+            data: 'name=admin',
             contentType: 'application/json;charset=utf-8',
             success: function (result) {
                 console.log(result);

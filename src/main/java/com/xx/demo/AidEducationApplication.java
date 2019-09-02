@@ -12,13 +12,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @MapperScan("com.xx.demo.mapper")
 public class AidEducationApplication {
 
-         /*extends SpringBootServletInitializer
-         @Override
-          protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-                    return application.sources(AidEducationApplication.class);
-          }*/
-
-          public static void main(String[] args) {
+    public static void main(String[] args) {
                     SpringApplication.run(AidEducationApplication.class, args);
           }
 
